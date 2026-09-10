@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <title>Dashboard Survei LANMAR Surabaya</title>
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    html {
+      width: 100%;
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #17345b 0%,
+          #0b1d35 35%,
+          #050d18 100%
+        );
+
+      color: #ffffff;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       BACKGROUND ANIMATION
+    ===================================================== */
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      width: 500px;
+      height: 500px;
+
+      top: -250px;
+      left: -250px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,210,26,0.12),
+          transparent 70%
+        );
+
+      border-radius: 50%;
+
+      animation:
+        floatingLight 8s ease-in-out infinite;
+
+      pointer-events: none;
+
+      z-index: 0;
+    }
+
+
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      width: 500px;
+      height: 500px;
+
+      right: -250px;
+      bottom: -250px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(22,140,255,0.10),
+          transparent 70%
+        );
+
+      border-radius: 50%;
+
+      animation:
+        floatingLight2 10s ease-in-out infinite;
+
+      pointer-events: none;
+
+      z-index: 0;
+    }
+
+
+    @keyframes floatingLight {
+
+      0%,
+      100% {
+        transform: translate(0,0);
+      }
+
+      50% {
+        transform: translate(60px,50px);
+      }
+
+    }
+
+
+    @keyframes floatingLight2 {
+
+      0%,
+      100% {
+        transform: translate(0,0);
+      }
+
+      50% {
+        transform: translate(-50px,-40px);
+      }
+
+    }
+
+
+    /* =====================================================
+       CONTAINER
+    ===================================================== */
+
+    .container {
+
+      position: relative;
+
+      z-index: 1;
+
+      width: 100%;
+
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      padding:
+        35px
+        25px
+        20px;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+
+      text-align: center;
+
+      padding:
+        20px
+        20px
+        30px;
+
+      animation:
+        headerAppear 0.9s ease forwards;
+
+      opacity: 0;
+
+    }
+
+
+    @keyframes headerAppear {
+
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo-wrapper {
+
+      width: 145px;
+      height: 145px;
+
+      margin:
+        0 auto
+        18px;
+
+      padding: 8px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle,
+          #ffffff 0%,
+          #eef4fb 70%,
+          #c9d7e8 100%
+        );
+
+      border:
+        4px solid #ffd21a;
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 5px rgba(255,210,26,0.10),
+        0 10px 35px rgba(0,0,0,0.45);
+
+      animation:
+        logoAppear 1s ease forwards,
+        logoFloat 4s ease-in-out 1s infinite;
+
+      opacity: 0;
+
+    }
+
+
+    .logo-wrapper img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+
+    }
+
+
+    @keyframes logoAppear {
+
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-15deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+
+    }
+
+
+    @keyframes logoFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .header h1 {
+
+      color: #ffd21a;
+
+      font-size: 36px;
+
+      font-weight: 900;
+
+      line-height: 1.25;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.5px;
+
+      text-shadow:
+        0 3px 10px rgba(0,0,0,0.45);
+
+    }
+
+
+    .header h2 {
+
+      margin-top: 10px;
+
+      color: #ffffff;
+
+      font-size: 23px;
+
+      font-weight: 700;
+
+      line-height: 1.4;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .header-line {
+
+      width: 180px;
+
+      height: 4px;
+
+      margin:
+        18px auto
+        15px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #ffd21a,
+          #ffffff,
+          #ffd21a,
+          transparent
+        );
+
+      border-radius: 999px;
+
+    }
+
+
+    .header-description {
+
+      max-width: 800px;
+
+      margin: 0 auto;
+
+      color: #c7d2e1;
+
+      font-size: 17px;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =====================================================
+       WELCOME
+    ===================================================== */
+
+    .welcome {
+
+      margin:
+        10px auto
+        30px;
+
+      padding:
+        20px 25px;
+
+      text-align: center;
+
+      background:
+        rgba(11,27,48,0.75);
+
+      border:
+        1px solid #35445a;
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.25);
+
+      animation:
+        fadeUp 0.8s ease 0.3s forwards;
+
+      opacity: 0;
+
+    }
+
+
+    .welcome-title {
+
+      color: #ffd21a;
+
+      font-size: 25px;
+
+      font-weight: 800;
+
+      margin-bottom: 6px;
+
+    }
+
+
+    .welcome-text {
+
+      color: #ffffff;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =====================================================
+       SURVEY GRID
+    ===================================================== */
+
+    .survey-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 24px;
+
+      margin-top: 20px;
+
+    }
+
+
+    /* =====================================================
+       SURVEY CARD
+    ===================================================== */
+
+    .survey-card {
+
+      position: relative;
+
+      min-height: 475px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(16,40,68,0.98),
+          rgba(7,17,31,0.98)
+        );
+
+      border:
+        1px solid #35445a;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,0.35);
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+      animation:
+        cardAppear 0.8s ease forwards;
+
+      opacity: 0;
+
+    }
+
+
+    .survey-card:nth-child(1) {
+      animation-delay: 0.45s;
+    }
+
+
+    .survey-card:nth-child(2) {
+      animation-delay: 0.60s;
+    }
+
+
+    .survey-card:nth-child(3) {
+      animation-delay: 0.75s;
+    }
+
+
+    @keyframes cardAppear {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(40px)
+          scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+
+    .survey-card:hover {
+
+      transform:
+        translateY(-10px);
+
+      border-color: #ffd21a;
+
+      box-shadow:
+        0 20px 45px rgba(0,0,0,0.5),
+        0 0 25px rgba(255,210,26,0.08);
+
+    }
+
+
+    /* =====================================================
+       CARD TOP
+    ===================================================== */
+
+    .card-top {
+
+      height: 10px;
+
+      width: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffd21a,
+          #ffef91,
+          #ffd21a
+        );
+
+    }
+
+
+    .survey-card:nth-child(1) .card-top {
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffd21a,
+          #fff176,
+          #ffd21a
+        );
+
+    }
+
+
+    .survey-card:nth-child(2) .card-top {
+
+      background:
+        linear-gradient(
+          90deg,
+          #168cff,
+          #62b4ff,
+          #168cff
+        );
+
+    }
+
+
+    .survey-card:nth-child(3) .card-top {
+
+      background:
+        linear-gradient(
+          90deg,
+          #00b894,
+          #55efc4,
+          #00b894
+        );
+
+    }
+
+
+    /* =====================================================
+       CARD CONTENT
+    ===================================================== */
+
+    .card-content {
+
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      text-align: center;
+
+      padding:
+        28px
+        25px
+        25px;
+
+    }
+
+
+    /* =====================================================
+       CARD ICON
+    ===================================================== */
+
+    .card-icon {
+
+      width: 90px;
+      height: 90px;
+
+      margin-bottom: 20px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      font-size: 45px;
+
+      background:
+        #07111f;
+
+      border:
+        3px solid #ffd21a;
+
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.35);
+
+      transition:
+        transform 0.35s ease;
+
+    }
+
+
+    .survey-card:hover .card-icon {
+
+      transform:
+        scale(1.08)
+        rotate(4deg);
+
+    }
+
+
+    .survey-card:nth-child(2) .card-icon {
+
+      border-color: #168cff;
+
+    }
+
+
+    .survey-card:nth-child(3) .card-icon {
+
+      border-color: #00b894;
+
+    }
+
+
+    /* =====================================================
+       CARD NUMBER
+    ===================================================== */
+
+    .card-number {
+
+      display: inline-block;
+
+      margin-bottom: 13px;
+
+      padding:
+        5px 14px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,210,26,0.12);
+
+      color: #ffd21a;
+
+      border:
+        1px solid rgba(255,210,26,0.3);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .survey-card:nth-child(2) .card-number {
+
+      color: #62b4ff;
+
+      background:
+        rgba(22,140,255,0.10);
+
+      border-color:
+        rgba(22,140,255,0.3);
+
+    }
+
+
+    .survey-card:nth-child(3) .card-number {
+
+      color: #55efc4;
+
+      background:
+        rgba(0,184,148,0.10);
+
+      border-color:
+        rgba(0,184,148,0.3);
+
+    }
+
+
+    /* =====================================================
+       CARD TITLE
+    ===================================================== */
+
+    .card-title {
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+      line-height: 1.4;
+
+      text-transform: uppercase;
+
+      min-height: 92px;
+
+    }
+
+
+    .card-title .highlight {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: #ffd21a;
+
+    }
+
+
+    .survey-card:nth-child(2)
+    .card-title .highlight {
+
+      color: #62b4ff;
+
+    }
+
+
+    .survey-card:nth-child(3)
+    .card-title .highlight {
+
+      color: #55efc4;
+
+    }
+
+
+    /* =====================================================
+       CARD DESCRIPTION
+    ===================================================== */
+
+    .card-description {
+
+      margin-top: 12px;
+
+      color: #b7c3d4;
+
+      font-size: 15px;
+
+      line-height: 1.65;
+
+      min-height: 80px;
+
+    }
+
+
+    /* =====================================================
+       CARD BUTTON
+    ===================================================== */
+
+    .card-button {
+
+      width: 100%;
+
+      min-height: 55px;
+
+      margin-top: auto;
+
+      padding:
+        12px
+        18px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffd21a,
+          #ffb800
+        );
+
+      color: #111111;
+
+      font-family: inherit;
+
+      font-size: 17px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 7px 18px rgba(0,0,0,0.3);
+
+      transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+    }
+
+
+    .card-button:hover {
+
+      filter: brightness(1.08);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .card-button:active {
+
+      transform:
+        translateY(1px);
+
+    }
+
+
+    .survey-card:nth-child(2)
+    .card-button {
+
+      background:
+        linear-gradient(
+          135deg,
+          #168cff,
+          #0065c8
+        );
+
+      color: #ffffff;
+
+    }
+
+
+    .survey-card:nth-child(3)
+    .card-button {
+
+      background:
+        linear-gradient(
+          135deg,
+          #00b894,
+          #008f72
+        );
+
+      color: #ffffff;
+
+    }
+
+
+    /* =====================================================
+       INFO AREA
+    ===================================================== */
+
+    .info-area {
+
+      margin:
+        35px auto
+        20px;
+
+      padding:
+        18px 22px;
+
+      max-width: 900px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      text-align: center;
+
+      background:
+        rgba(11,27,48,0.7);
+
+      border:
+        1px solid #35445a;
+
+      border-radius: 12px;
+
+      color: #b7c3d4;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+      animation:
+        fadeUp 0.8s ease 0.9s forwards;
+
+      opacity: 0;
+
+    }
+
+
+    .info-icon {
+
+      color: #ffd21a;
+
+      font-size: 23px;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+
+      margin-top: 25px;
+
+      padding:
+        25px
+        10px
+        10px;
+
+      text-align: center;
+
+      border-top:
+        1px solid rgba(255,255,255,0.08);
+
+      color: #7e8999;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      animation:
+        fadeUp 0.8s ease 1s forwards;
+
+      opacity: 0;
+
+    }
+
+
+    .footer strong {
+
+      color: #ffd21a;
+
+    }
+
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
+    .loading-overlay {
+
+      position: fixed;
+
+      inset: 0;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        rgba(3,9,17,0.88);
+
+      backdrop-filter:
+        blur(6px);
+
+      z-index: 9999;
+
+    }
+
+
+    .loading-overlay.show {
+
+      display: flex;
+
+    }
+
+
+    .loading-box {
+
+      width:
+        min(90%, 420px);
+
+      padding:
+        30px 25px;
+
+      text-align: center;
+
+      background:
+        #0b1b30;
+
+      border:
+        1px solid #35445a;
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.5);
+
+    }
+
+
+    .loading-spinner {
+
+      width: 55px;
+      height: 55px;
+
+      margin:
+        0 auto 18px;
+
+      border:
+        5px solid #35445a;
+
+      border-top-color:
+        #ffd21a;
+
+      border-radius: 50%;
+
+      animation:
+        spin 0.9s linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    .loading-text {
+
+      color: #ffffff;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE TABLET
+    ===================================================== */
+
+    @media screen and (max-width: 1000px) {
+
+      .container {
+
+        padding:
+          20px
+          15px;
+
+      }
+
+
+      .header h1 {
+
+        font-size: 30px;
+
+      }
+
+
+      .header h2 {
+
+        font-size: 21px;
+
+      }
+
+
+      .survey-grid {
+
+        grid-template-columns:
+          1fr;
+
+        max-width: 650px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+      }
+
+
+      .survey-card {
+
+        min-height: 390px;
+
+      }
+
+
+      .card-title {
+
+        min-height: auto;
+
+      }
+
+
+      .card-description {
+
+        min-height: auto;
+
+        max-width: 500px;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE HP
+    ===================================================== */
+
+    @media screen and (max-width: 600px) {
+
+      body {
+
+        font-size: 16px;
+
+      }
+
+
+      .container {
+
+        padding:
+          10px
+          8px
+          15px;
+
+      }
+
+
+      .header {
+
+        padding:
+          15px
+          8px
+          20px;
+
+      }
+
+
+      .logo-wrapper {
+
+        width: 105px;
+        height: 105px;
+
+        border-width: 3px;
+
+        margin-bottom: 15px;
+
+      }
+
+
+      .header h1 {
+
+        font-size: 25px;
+
+        line-height: 1.3;
+
+      }
+
+
+      .header h2 {
+
+        font-size: 19px;
+
+        line-height: 1.4;
+
+      }
+
+
+      .header-description {
+
+        font-size: 16px;
+
+      }
+
+
+      .header-line {
+
+        width: 130px;
+
+      }
+
+
+      .welcome {
+
+        padding:
+          17px
+          14px;
+
+        margin-bottom: 20px;
+
+      }
+
+
+      .welcome-title {
+
+        font-size: 21px;
+
+      }
+
+
+      .welcome-text {
+
+        font-size: 16px;
+
+      }
+
+
+      .survey-grid {
+
+        gap: 16px;
+
+      }
+
+
+      .survey-card {
+
+        min-height: 420px;
+
+        border-radius: 14px;
+
+      }
+
+
+      .card-content {
+
+        padding:
+          25px
+          18px
+          20px;
+
+      }
+
+
+      .card-icon {
+
+        width: 75px;
+        height: 75px;
+
+        font-size: 36px;
+
+      }
+
+
+      .card-title {
+
+        font-size: 21px;
+
+      }
+
+
+      .card-description {
+
+        font-size: 16px;
+
+      }
+
+
+      .card-button {
+
+        min-height: 58px;
+
+        font-size: 18px;
+
+      }
+
+
+      .info-area {
+
+        margin-top: 22px;
+
+        padding:
+          15px 12px;
+
+        font-size: 15px;
+
+      }
+
+
+      .footer {
+
+        font-size: 13px;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       HP SANGAT KECIL
+    ===================================================== */
+
+    @media screen and (max-width: 380px) {
+
+      .header h1 {
+
+        font-size: 22px;
+
+      }
+
+
+      .header h2 {
+
+        font-size: 17px;
+
+      }
+
+
+      .card-title {
+
+        font-size: 19px;
+
+      }
+
+
+      .card-description {
+
+        font-size: 15px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       MAIN CONTAINER
+  ===================================================== -->
+
+  <div class="container">
+
+
+    <!-- ===================================================
+         HEADER
+    ==================================================== -->
+
+    <header class="header">
+
+
+      <!-- LOGO LANMAR -->
+
+      <div class="logo-wrapper">
+
+        <!--
+          =================================================
+          GANTI FILE LOGO DI SINI JIKA NAMA FILE BERBEDA
+          =================================================
+        -->
+
+        <img
+          src="LOGO LANMAR EMAS.png"
+          alt="Logo LANMAR Surabaya"
+        >
+
+      </div>
+
+
+      <h1>
+        SISTEM SURVEI
+      </h1>
+
+
+      <h2>
+        LANMAR SURABAYA
+      </h2>
+
+
+      <div class="header-line"></div>
+
+
+      <p class="header-description">
+        Sistem Informasi Survei Persepsi dan Kualitas
+        Pelayanan Publik LANMAR Surabaya
+      </p>
+
+
+    </header>
+
+
+    <!-- ===================================================
+         WELCOME
+    ==================================================== -->
+
+    <section class="welcome">
+
+      <div class="welcome-title">
+        SELAMAT DATANG
+      </div>
+
+      <div class="welcome-text">
+
+        Silakan pilih jenis survei yang ingin
+        Bapak/Ibu isi.
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         3 MENU SURVEI
+    ==================================================== -->
+
+    <main class="survey-grid">
+
+
+      <!-- =================================================
+           SURVEI 1
+      ================================================== -->
+
+      <article class="survey-card">
+
+        <div class="card-top"></div>
+
+
+        <div class="card-content">
+
+
+          <div class="card-icon">
+            🛡️
+          </div>
+
+
+          <div class="card-number">
+            SURVEI 01
+          </div>
+
+
+          <h3 class="card-title">
+
+            SURVEI INDEKS
+
+            <span class="highlight">
+              PERSEPSI ANTI KORUPSI
+            </span>
+
+          </h3>
+
+
+          <p class="card-description">
+
+            Berikan penilaian terhadap integritas
+            dan pelayanan yang bebas dari korupsi
+            di lingkungan LANMAR Surabaya.
+
+          </p>
+
+
+          <button
+            type="button"
+            class="card-button"
+            onclick="bukaSurvei('spak')"
+          >
+            MULAI SURVEI
+          </button>
+
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           SURVEI 2
+      ================================================== -->
+
+      <article class="survey-card">
+
+        <div class="card-top"></div>
+
+
+        <div class="card-content">
+
+
+          <div class="card-icon">
+            ⭐
+          </div>
+
+
+          <div class="card-number">
+            SURVEI 02
+          </div>
+
+
+          <h3 class="card-title">
+
+            SURVEI INDEKS
+
+            <span class="highlight">
+              KEPUASAN MASYARAKAT
+            </span>
+
+          </h3>
+
+
+          <p class="card-description">
+
+            Berikan penilaian mengenai tingkat
+            kepuasan masyarakat terhadap pelayanan
+            yang diberikan LANMAR Surabaya.
+
+          </p>
+
+
+          <button
+            type="button"
+            class="card-button"
+            onclick="bukaSurvei('ikm')"
+          >
+            MULAI SURVEI
+          </button>
+
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           SURVEI 3
+      ================================================== -->
+
+      <article class="survey-card">
+
+        <div class="card-top"></div>
+
+
+        <div class="card-content">
+
+
+          <div class="card-icon">
+            📋
+          </div>
+
+
+          <div class="card-number">
+            SURVEI 03
+          </div>
+
+
+          <h3 class="card-title">
+
+            SURVEY INDEKS
+
+            <span class="highlight">
+              KUALITAS PELAYANAN
+            </span>
+
+          </h3>
+
+
+          <p class="card-description">
+
+            Berikan penilaian terhadap kualitas
+            pelayanan LANMAR Surabaya sebagai bahan
+            evaluasi dan peningkatan pelayanan.
+
+          </p>
+
+
+          <button
+            type="button"
+            class="card-button"
+            onclick="bukaSurvei('ikp')"
+          >
+            MULAI SURVEI
+          </button>
+
+
+        </div>
+
+      </article>
+
+
+    </main>
+
+
+    <!-- ===================================================
+         INFO
+    ==================================================== -->
+
+    <div class="info-area">
+
+      <span class="info-icon">
+        ℹ️
+      </span>
+
+      <span>
+        Pilih salah satu survei sesuai dengan
+        kebutuhan penilaian yang akan Bapak/Ibu berikan.
+      </span>
+
+    </div>
+
+
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
+
+    <footer class="footer">
+
+      <div>
+        <strong>
+          LANMAR SURABAYA
+        </strong>
+      </div>
+
+      <div>
+        Sistem Informasi Survei Pelayanan Publik
+      </div>
+
+      <div>
+        © 2025 LANMAR Surabaya
+      </div>
+
+    </footer>
+
+
+  </div>
+
+
+  <!-- =====================================================
+       LOADING OVERLAY
+  ====================================================== -->
+
+  <div
+    id="loadingOverlay"
+    class="loading-overlay"
+  >
+
+    <div class="loading-box">
+
+      <div class="loading-spinner"></div>
+
+      <div class="loading-text">
+        Membuka halaman survei...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+
+    /* =====================================================
+       URL MASING-MASING KUESIONER
+       
+       =====================================================
+       
+       GANTI URL DI BAWAH INI DENGAN URL WEB APP
+       MASING-MASING KUESIONER.
+       
+       Contoh:
+       
+       spak:
+       https://script.google.com/macros/s/XXXXX/exec
+       
+       ikm:
+       https://script.google.com/macros/s/YYYYY/exec
+       
+       ikp:
+       https://script.google.com/macros/s/ZZZZZ/exec
+       
+       ===================================================== */
+
+    const URL_SURVEI = {
+
+      /* -------------------------------------------------
+         1. SURVEI INDEKS PERSEPSI ANTI KORUPSI
+         ------------------------------------------------- */
+
+      spak:
+        "https://script.google.com/macros/s/AKfycbwruRT3rjqn_sVf8vt7HiSNAjgCIv-uyAleRppkdBjnNpD2fBC0c5x1-7LengVFMy_Z/exec",
+
+
+      /* -------------------------------------------------
+         2. SURVEI INDEKS KEPUASAN MASYARAKAT
+         ------------------------------------------------- */
+
+      ikm:
+        "https://script.google.com/macros/s/URL_IKM/exec",
+
+
+      /* -------------------------------------------------
+         3. SURVEY INDEKS KUALITAS PELAYANAN
+         ------------------------------------------------- */
+
+      ikp:
+        "https://script.google.com/macros/s/URL_IKP/exec"
+
+    };
+
+
+    /* =====================================================
+       BUKA SURVEI
+    ====================================================== */
+
+    function bukaSurvei(jenis) {
+
+
+      let url = "";
+
+
+      /* ================================================
+         TENTUKAN URL
+      ================================================ */
+
+      if (jenis === "spak") {
+
+        url = URL_SURVEI.spak;
+
+      }
+
+
+      else if (jenis === "ikm") {
+
+        url = URL_SURVEI.ikm;
+
+      }
+
+
+      else if (jenis === "ikp") {
+
+        url = URL_SURVEI.ikp;
+
+      }
+
+
+      /* ================================================
+         CEK URL
+      ================================================ */
+
+      if (
+        !url ||
+        url.includes("URL_SPAK") ||
+        url.includes("URL_IKM") ||
+        url.includes("URL_IKP")
+      ) {
+
+        alert(
+          "URL survei belum diatur.\n\n" +
+          "Silakan isi URL survei terlebih dahulu " +
+          "pada bagian URL_SURVEI di index.html."
+        );
+
+        return;
+
+      }
+
+
+      /* ================================================
+         TAMPILKAN LOADING
+      ================================================ */
+
+      const loading =
+        document.getElementById(
+          "loadingOverlay"
+        );
+
+
+      if (loading) {
+
+        loading.classList.add("show");
+
+      }
+
+
+      /* ================================================
+         BUKA HALAMAN
+      ================================================ */
+
+      setTimeout(function() {
+
+        window.location.href = url;
+
+      }, 500);
+
+    }
+
+
+    /* =====================================================
+       ANIMASI SAAT KEMBALI KE HALAMAN
+    ====================================================== */
+
+    window.addEventListener(
+      "pageshow",
+      function() {
+
+        const loading =
+          document.getElementById(
+            "loadingOverlay"
+          );
+
+
+        if (loading) {
+
+          loading.classList.remove("show");
+
+        }
+
+      }
+    );
+
+
+  </script>
+
+
+</body>
+</html>
