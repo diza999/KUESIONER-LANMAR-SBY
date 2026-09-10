@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -8,7 +9,8 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   >
 
-  <title>Dashboard Survei LANMAR Surabaya</title>
+  <title>Survei LANMAR Surabaya</title>
+
 
   <style>
 
@@ -38,9 +40,9 @@
       background:
         radial-gradient(
           circle at top,
-          #17345b 0%,
-          #0b1d35 35%,
-          #050d18 100%
+          #102d50 0%,
+          #07111f 45%,
+          #030a13 100%
         );
 
       color: #ffffff;
@@ -55,7 +57,7 @@
 
 
     /* =====================================================
-       BACKGROUND ANIMATION
+       BACKGROUND EFFECT
     ===================================================== */
 
     body::before {
@@ -63,108 +65,38 @@
 
       position: fixed;
 
-      width: 500px;
-      height: 500px;
+      top: -200px;
+      left: 50%;
 
-      top: -250px;
-      left: -250px;
+      width: 600px;
+      height: 600px;
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,210,26,0.12),
-          transparent 70%
-        );
-
-      border-radius: 50%;
-
-      animation:
-        floatingLight 8s ease-in-out infinite;
-
-      pointer-events: none;
-
-      z-index: 0;
-    }
-
-
-    body::after {
-      content: "";
-
-      position: fixed;
-
-      width: 500px;
-      height: 500px;
-
-      right: -250px;
-      bottom: -250px;
+      transform: translateX(-50%);
 
       background:
         radial-gradient(
           circle,
-          rgba(22,140,255,0.10),
+          rgba(255,210,26,0.10),
           transparent 70%
         );
 
-      border-radius: 50%;
-
-      animation:
-        floatingLight2 10s ease-in-out infinite;
-
       pointer-events: none;
 
-      z-index: 0;
-    }
-
-
-    @keyframes floatingLight {
-
-      0%,
-      100% {
-        transform: translate(0,0);
-      }
-
-      50% {
-        transform: translate(60px,50px);
-      }
-
-    }
-
-
-    @keyframes floatingLight2 {
-
-      0%,
-      100% {
-        transform: translate(0,0);
-      }
-
-      50% {
-        transform: translate(-50px,-40px);
-      }
-
+      z-index: -1;
     }
 
 
     /* =====================================================
-       CONTAINER
+       MAIN CONTAINER
     ===================================================== */
 
     .container {
-
-      position: relative;
-
-      z-index: 1;
-
       width: 100%;
-
       max-width: 1250px;
 
       margin: 0 auto;
 
-      padding:
-        35px
-        25px
-        20px;
-
+      padding: 25px 20px 20px;
     }
 
 
@@ -173,23 +105,57 @@
     ===================================================== */
 
     .header {
+      position: relative;
+
+      width: 100%;
+
+      padding: 35px 25px 30px;
 
       text-align: center;
 
-      padding:
-        20px
-        20px
-        30px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,42,72,0.98),
+          rgba(7,17,31,0.98)
+        );
+
+      border: 1px solid rgba(255,210,26,0.30);
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.40);
+
+      overflow: hidden;
 
       animation:
-        headerAppear 0.9s ease forwards;
-
-      opacity: 0;
-
+        headerMasuk 0.8s ease;
     }
 
 
-    @keyframes headerAppear {
+    .header::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 4px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffd21a,
+          #ffffff,
+          #ffd21a
+        );
+    }
+
+
+    @keyframes headerMasuk {
 
       from {
         opacity: 0;
@@ -209,49 +175,37 @@
     ===================================================== */
 
     .logo-wrapper {
+      width: 120px;
+      height: 120px;
 
-      width: 145px;
-      height: 145px;
-
-      margin:
-        0 auto
-        18px;
-
-      padding: 8px;
+      margin: 0 auto 18px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
-      background:
-        radial-gradient(
-          circle,
-          #ffffff 0%,
-          #eef4fb 70%,
-          #c9d7e8 100%
-        );
-
-      border:
-        4px solid #ffd21a;
-
       border-radius: 50%;
 
+      background:
+        linear-gradient(
+          145deg,
+          #ffd21a,
+          #d9a900
+        );
+
+      padding: 5px;
+
       box-shadow:
-        0 0 0 5px rgba(255,210,26,0.10),
-        0 10px 35px rgba(0,0,0,0.45);
+        0 0 0 5px rgba(255,210,26,0.08),
+        0 10px 30px rgba(0,0,0,0.35);
 
       animation:
-        logoAppear 1s ease forwards,
-        logoFloat 4s ease-in-out 1s infinite;
-
-      opacity: 0;
-
+        logoMasuk 1s ease,
+        logoMengambang 4s ease-in-out infinite 1s;
     }
 
 
     .logo-wrapper img {
-
       width: 100%;
       height: 100%;
 
@@ -259,14 +213,17 @@
 
       border-radius: 50%;
 
+      background: #ffffff;
+
+      padding: 5px;
     }
 
 
-    @keyframes logoAppear {
+    @keyframes logoMasuk {
 
       from {
         opacity: 0;
-        transform: scale(0.5) rotate(-15deg);
+        transform: scale(0.5) rotate(-20deg);
       }
 
       to {
@@ -277,7 +234,7 @@
     }
 
 
-    @keyframes logoFloat {
+    @keyframes logoMengambang {
 
       0%,
       100% {
@@ -285,22 +242,20 @@
       }
 
       50% {
-        transform: translateY(-8px);
+        transform: translateY(-7px);
       }
 
     }
 
 
     /* =====================================================
-       TITLE
+       HEADER TEXT
     ===================================================== */
 
     .header h1 {
-
       color: #ffd21a;
 
-      font-size: 36px;
-
+      font-size: 32px;
       font-weight: 900;
 
       line-height: 1.25;
@@ -309,124 +264,87 @@
 
       letter-spacing: 0.5px;
 
-      text-shadow:
-        0 3px 10px rgba(0,0,0,0.45);
-
+      margin-bottom: 10px;
     }
 
 
     .header h2 {
-
-      margin-top: 10px;
-
       color: #ffffff;
 
-      font-size: 23px;
-
+      font-size: 20px;
       font-weight: 700;
 
-      line-height: 1.4;
+      line-height: 1.5;
 
       text-transform: uppercase;
 
+      margin-bottom: 15px;
     }
 
 
     .header-line {
+      width: 120px;
+      height: 3px;
 
-      width: 180px;
-
-      height: 4px;
-
-      margin:
-        18px auto
-        15px;
+      margin: 15px auto;
 
       background:
         linear-gradient(
           90deg,
           transparent,
           #ffd21a,
-          #ffffff,
-          #ffd21a,
           transparent
         );
 
-      border-radius: 999px;
-
+      border-radius: 10px;
     }
 
 
     .header-description {
-
       max-width: 800px;
 
       margin: 0 auto;
 
-      color: #c7d2e1;
+      color: #c9d4e2;
 
-      font-size: 17px;
+      font-size: 16px;
 
       line-height: 1.7;
-
     }
 
 
     /* =====================================================
-       WELCOME
+       TITLE SECTION
     ===================================================== */
 
-    .welcome {
-
-      margin:
-        10px auto
-        30px;
-
-      padding:
-        20px 25px;
-
+    .dashboard-title {
       text-align: center;
 
-      background:
-        rgba(11,27,48,0.75);
-
-      border:
-        1px solid #35445a;
-
-      border-radius: 14px;
-
-      box-shadow:
-        0 8px 25px rgba(0,0,0,0.25);
+      padding: 35px 10px 20px;
 
       animation:
-        fadeUp 0.8s ease 0.3s forwards;
-
-      opacity: 0;
-
+        fadeUp 0.8s ease 0.2s both;
     }
 
 
-    .welcome-title {
-
+    .dashboard-title h3 {
       color: #ffd21a;
 
       font-size: 25px;
+      font-weight: 900;
 
-      font-weight: 800;
+      text-transform: uppercase;
 
-      margin-bottom: 6px;
-
+      margin-bottom: 8px;
     }
 
 
-    .welcome-text {
+    .dashboard-title p {
+      color: #aebdce;
 
-      color: #ffffff;
-
-      font-size: 17px;
+      font-size: 16px;
 
       line-height: 1.6;
-
     }
 
 
@@ -434,7 +352,7 @@
 
       from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(20px);
       }
 
       to {
@@ -450,16 +368,16 @@
     ===================================================== */
 
     .survey-grid {
+      width: 100%;
 
       display: grid;
 
       grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-      gap: 24px;
+      gap: 22px;
 
-      margin-top: 20px;
-
+      margin-top: 5px;
     }
 
 
@@ -468,290 +386,176 @@
     ===================================================== */
 
     .survey-card {
-
       position: relative;
-
-      min-height: 475px;
 
       display: flex;
 
       flex-direction: column;
 
+      min-height: 440px;
+
       background:
         linear-gradient(
           145deg,
-          rgba(16,40,68,0.98),
-          rgba(7,17,31,0.98)
+          #0d233d,
+          #07111f
         );
 
-      border:
-        1px solid #35445a;
+      border: 1px solid #29415e;
 
       border-radius: 18px;
+
+      padding: 25px;
 
       overflow: hidden;
 
       box-shadow:
-        0 12px 35px rgba(0,0,0,0.35);
+        0 10px 30px rgba(0,0,0,0.30);
 
       transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
       animation:
-        cardAppear 0.8s ease forwards;
-
-      opacity: 0;
-
+        cardMasuk 0.7s ease both;
     }
 
 
     .survey-card:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+
+    .survey-card:nth-child(2) {
+      animation-delay: 0.30s;
+    }
+
+    .survey-card:nth-child(3) {
       animation-delay: 0.45s;
     }
 
 
-    .survey-card:nth-child(2) {
-      animation-delay: 0.60s;
-    }
-
-
-    .survey-card:nth-child(3) {
-      animation-delay: 0.75s;
-    }
-
-
-    @keyframes cardAppear {
+    @keyframes cardMasuk {
 
       from {
         opacity: 0;
-        transform:
-          translateY(40px)
-          scale(0.96);
+        transform: translateY(35px);
       }
 
       to {
         opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
+        transform: translateY(0);
       }
 
     }
 
 
     .survey-card:hover {
-
-      transform:
-        translateY(-10px);
+      transform: translateY(-8px);
 
       border-color: #ffd21a;
 
       box-shadow:
-        0 20px 45px rgba(0,0,0,0.5),
+        0 18px 45px rgba(0,0,0,0.50),
         0 0 25px rgba(255,210,26,0.08);
-
     }
 
 
     /* =====================================================
-       CARD TOP
+       CARD TOP LINE
     ===================================================== */
 
-    .card-top {
+    .survey-card::before {
+      content: "";
 
-      height: 10px;
+      position: absolute;
+
+      top: 0;
+      left: 0;
 
       width: 100%;
+      height: 5px;
 
       background:
         linear-gradient(
           90deg,
           #ffd21a,
-          #ffef91,
+          #fff3a1,
           #ffd21a
         );
-
-    }
-
-
-    .survey-card:nth-child(1) .card-top {
-
-      background:
-        linear-gradient(
-          90deg,
-          #ffd21a,
-          #fff176,
-          #ffd21a
-        );
-
-    }
-
-
-    .survey-card:nth-child(2) .card-top {
-
-      background:
-        linear-gradient(
-          90deg,
-          #168cff,
-          #62b4ff,
-          #168cff
-        );
-
-    }
-
-
-    .survey-card:nth-child(3) .card-top {
-
-      background:
-        linear-gradient(
-          90deg,
-          #00b894,
-          #55efc4,
-          #00b894
-        );
-
     }
 
 
     /* =====================================================
-       CARD CONTENT
+       NUMBER
     ===================================================== */
 
-    .card-content {
+    .survey-number {
+      position: absolute;
 
-      flex: 1;
+      top: 18px;
+      right: 18px;
 
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      text-align: center;
-
-      padding:
-        28px
-        25px
-        25px;
-
-    }
-
-
-    /* =====================================================
-       CARD ICON
-    ===================================================== */
-
-    .card-icon {
-
-      width: 90px;
-      height: 90px;
-
-      margin-bottom: 20px;
+      width: 42px;
+      height: 42px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       border-radius: 50%;
 
-      font-size: 45px;
+      background: #ffd21a;
 
-      background:
-        #07111f;
+      color: #111111;
 
-      border:
-        3px solid #ffd21a;
+      font-size: 18px;
+      font-weight: 900;
 
       box-shadow:
-        0 8px 20px rgba(0,0,0,0.35);
-
-      transition:
-        transform 0.35s ease;
-
-    }
-
-
-    .survey-card:hover .card-icon {
-
-      transform:
-        scale(1.08)
-        rotate(4deg);
-
-    }
-
-
-    .survey-card:nth-child(2) .card-icon {
-
-      border-color: #168cff;
-
-    }
-
-
-    .survey-card:nth-child(3) .card-icon {
-
-      border-color: #00b894;
-
+        0 5px 15px rgba(0,0,0,0.30);
     }
 
 
     /* =====================================================
-       CARD NUMBER
+       ICON
     ===================================================== */
 
-    .card-number {
+    .survey-icon {
+      width: 80px;
+      height: 80px;
 
-      display: inline-block;
+      margin-bottom: 20px;
 
-      margin-bottom: 13px;
+      border-radius: 18px;
 
-      padding:
-        5px 14px;
-
-      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       background:
-        rgba(255,210,26,0.12);
+        linear-gradient(
+          145deg,
+          #ffd21a,
+          #d9a900
+        );
 
-      color: #ffd21a;
+      color: #111111;
 
-      border:
-        1px solid rgba(255,210,26,0.3);
+      font-size: 40px;
 
-      font-size: 13px;
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.30);
 
-      font-weight: 800;
-
-      letter-spacing: 1px;
-
+      transition:
+        transform 0.3s ease;
     }
 
 
-    .survey-card:nth-child(2) .card-number {
-
-      color: #62b4ff;
-
-      background:
-        rgba(22,140,255,0.10);
-
-      border-color:
-        rgba(22,140,255,0.3);
-
-    }
-
-
-    .survey-card:nth-child(3) .card-number {
-
-      color: #55efc4;
-
-      background:
-        rgba(0,184,148,0.10);
-
-      border-color:
-        rgba(0,184,148,0.3);
-
+    .survey-card:hover .survey-icon {
+      transform:
+        scale(1.08)
+        rotate(-3deg);
     }
 
 
@@ -759,47 +563,17 @@
        CARD TITLE
     ===================================================== */
 
-    .card-title {
+    .survey-card h4 {
+      color: #ffd21a;
 
-      color: #ffffff;
-
-      font-size: 22px;
-
+      font-size: 21px;
       font-weight: 900;
 
       line-height: 1.4;
 
       text-transform: uppercase;
 
-      min-height: 92px;
-
-    }
-
-
-    .card-title .highlight {
-
-      display: block;
-
-      margin-top: 4px;
-
-      color: #ffd21a;
-
-    }
-
-
-    .survey-card:nth-child(2)
-    .card-title .highlight {
-
-      color: #62b4ff;
-
-    }
-
-
-    .survey-card:nth-child(3)
-    .card-title .highlight {
-
-      color: #55efc4;
-
+      margin-bottom: 14px;
     }
 
 
@@ -807,130 +581,86 @@
        CARD DESCRIPTION
     ===================================================== */
 
-    .card-description {
-
-      margin-top: 12px;
-
-      color: #b7c3d4;
+    .survey-description {
+      color: #c8d4e2;
 
       font-size: 15px;
 
-      line-height: 1.65;
+      line-height: 1.7;
 
-      min-height: 80px;
-
+      margin-bottom: 15px;
     }
 
 
     /* =====================================================
-       CARD BUTTON
+       CARD INFO
     ===================================================== */
 
-    .card-button {
+    .survey-info {
+      display: flex;
 
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 20px;
+
+      color: #9eb0c5;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+
+    .survey-info-icon {
+      color: #ffd21a;
+
+      font-size: 17px;
+    }
+
+
+    /* =====================================================
+       BUTTON AREA
+    ===================================================== */
+
+    .button-group {
       width: 100%;
 
-      min-height: 55px;
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
 
       margin-top: auto;
+    }
 
-      padding:
-        12px
-        18px;
+
+    /* =====================================================
+       BUTTON UMUM
+    ===================================================== */
+
+    .survey-button {
+      width: 100%;
+
+      min-height: 52px;
 
       border: none;
 
       border-radius: 10px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ffd21a,
-          #ffb800
-        );
-
-      color: #111111;
+      padding: 12px 15px;
 
       font-family: inherit;
 
-      font-size: 17px;
+      font-size: 15px;
 
       font-weight: 900;
 
       cursor: pointer;
 
-      box-shadow:
-        0 7px 18px rgba(0,0,0,0.3);
-
-      transition:
-        transform 0.2s ease,
-        filter 0.2s ease;
-
-    }
-
-
-    .card-button:hover {
-
-      filter: brightness(1.08);
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .card-button:active {
-
-      transform:
-        translateY(1px);
-
-    }
-
-
-    .survey-card:nth-child(2)
-    .card-button {
-
-      background:
-        linear-gradient(
-          135deg,
-          #168cff,
-          #0065c8
-        );
-
-      color: #ffffff;
-
-    }
-
-
-    .survey-card:nth-child(3)
-    .card-button {
-
-      background:
-        linear-gradient(
-          135deg,
-          #00b894,
-          #008f72
-        );
-
-      color: #ffffff;
-
-    }
-
-
-    /* =====================================================
-       INFO AREA
-    ===================================================== */
-
-    .info-area {
-
-      margin:
-        35px auto
-        20px;
-
-      padding:
-        18px 22px;
-
-      max-width: 900px;
+      text-decoration: none;
 
       display: flex;
 
@@ -938,38 +668,161 @@
 
       justify-content: center;
 
-      gap: 12px;
+      gap: 8px;
 
-      text-align: center;
-
-      background:
-        rgba(11,27,48,0.7);
-
-      border:
-        1px solid #35445a;
-
-      border-radius: 12px;
-
-      color: #b7c3d4;
-
-      font-size: 15px;
-
-      line-height: 1.6;
-
-      animation:
-        fadeUp 0.8s ease 0.9s forwards;
-
-      opacity: 0;
-
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
 
-    .info-icon {
+    .survey-button:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .survey-button:active {
+      transform: translateY(1px);
+    }
+
+
+    /* =====================================================
+       BUTTON MULAI SURVEI
+    ===================================================== */
+
+    .btn-survei {
+      background:
+        linear-gradient(
+          90deg,
+          #ffd21a,
+          #ffca00,
+          #ffd21a
+        );
+
+      color: #111111;
+
+      box-shadow:
+        0 6px 15px rgba(255,210,26,0.20);
+    }
+
+
+    .btn-survei:hover {
+      box-shadow:
+        0 8px 22px rgba(255,210,26,0.35);
+    }
+
+
+    /* =====================================================
+       BUTTON PERSENTASE
+    ===================================================== */
+
+    .btn-persentase {
+      background:
+        linear-gradient(
+          90deg,
+          #0e6fae,
+          #168cff,
+          #0e6fae
+        );
+
+      color: #ffffff;
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,0.20);
+    }
+
+
+    .btn-persentase:hover {
+      background:
+        linear-gradient(
+          90deg,
+          #168cff,
+          #0e6fae,
+          #168cff
+        );
+
+      box-shadow:
+        0 8px 22px rgba(22,140,255,0.25);
+    }
+
+
+    /* =====================================================
+       BADGE
+    ===================================================== */
+
+    .survey-badge {
+      display: inline-block;
+
+      width: fit-content;
+
+      margin-bottom: 12px;
+
+      padding: 5px 11px;
+
+      border-radius: 20px;
+
+      background: rgba(255,210,26,0.10);
+
+      border: 1px solid rgba(255,210,26,0.25);
 
       color: #ffd21a;
 
-      font-size: 23px;
+      font-size: 12px;
 
+      font-weight: 800;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       INFORMATION
+    ===================================================== */
+
+    .information-box {
+      width: 100%;
+
+      margin-top: 30px;
+
+      padding: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11,27,48,0.95),
+          rgba(7,17,31,0.95)
+        );
+
+      border: 1px solid #29415e;
+
+      border-radius: 15px;
+
+      text-align: center;
+
+      animation:
+        fadeUp 0.8s ease 0.7s both;
+    }
+
+
+    .information-box h5 {
+      color: #ffd21a;
+
+      font-size: 19px;
+      font-weight: 900;
+
+      margin-bottom: 8px;
+    }
+
+
+    .information-box p {
+      color: #b7c5d5;
+
+      font-size: 14px;
+
+      line-height: 1.7;
     }
 
 
@@ -978,46 +831,47 @@
     ===================================================== */
 
     .footer {
-
-      margin-top: 25px;
-
-      padding:
-        25px
-        10px
-        10px;
+      width: 100%;
 
       text-align: center;
 
-      border-top:
-        1px solid rgba(255,255,255,0.08);
+      padding: 30px 10px 15px;
 
-      color: #7e8999;
+      color: #7f90a4;
 
-      font-size: 14px;
+      font-size: 13px;
 
       line-height: 1.7;
-
-      animation:
-        fadeUp 0.8s ease 1s forwards;
-
-      opacity: 0;
-
     }
 
 
     .footer strong {
-
       color: #ffd21a;
+    }
 
+
+    .footer-line {
+      width: 100px;
+
+      height: 2px;
+
+      margin: 0 auto 12px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #ffd21a,
+          transparent
+        );
     }
 
 
     /* =====================================================
-       LOADING
+       LOADING OVERLAY
     ===================================================== */
 
     .loading-overlay {
-
       position: fixed;
 
       inset: 0;
@@ -1025,70 +879,55 @@
       display: none;
 
       align-items: center;
-
       justify-content: center;
 
       background:
-        rgba(3,9,17,0.88);
+        rgba(3,10,19,0.88);
 
       backdrop-filter:
-        blur(6px);
+        blur(5px);
 
       z-index: 9999;
-
     }
 
 
     .loading-overlay.show {
-
       display: flex;
-
     }
 
 
     .loading-box {
+      width: min(90%, 400px);
 
-      width:
-        min(90%, 420px);
+      padding: 30px 25px;
 
-      padding:
-        30px 25px;
+      background: #0b1b30;
 
-      text-align: center;
-
-      background:
-        #0b1b30;
-
-      border:
-        1px solid #35445a;
+      border: 1px solid #ffd21a;
 
       border-radius: 16px;
 
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.5);
+      text-align: center;
 
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.60);
     }
 
 
     .loading-spinner {
+      width: 50px;
+      height: 50px;
 
-      width: 55px;
-      height: 55px;
+      margin: 0 auto 18px;
 
-      margin:
-        0 auto 18px;
+      border: 4px solid rgba(255,210,26,0.20);
 
-      border:
-        5px solid #35445a;
-
-      border-top-color:
-        #ffd21a;
+      border-top-color: #ffd21a;
 
       border-radius: 50%;
 
       animation:
         spin 0.9s linear infinite;
-
     }
 
 
@@ -1101,300 +940,229 @@
     }
 
 
-    .loading-text {
+    .loading-box h6 {
+      color: #ffd21a;
 
-      color: #ffffff;
+      font-size: 18px;
 
-      font-size: 17px;
+      margin-bottom: 6px;
+    }
 
-      font-weight: 700;
 
+    .loading-box p {
+      color: #b8c6d6;
+
+      font-size: 14px;
     }
 
 
     /* =====================================================
-       RESPONSIVE TABLET
+       TABLET
     ===================================================== */
 
-    @media screen and (max-width: 1000px) {
-
-      .container {
-
-        padding:
-          20px
-          15px;
-
-      }
-
-
-      .header h1 {
-
-        font-size: 30px;
-
-      }
-
-
-      .header h2 {
-
-        font-size: 21px;
-
-      }
-
+    @media screen and (max-width: 1050px) {
 
       .survey-grid {
-
         grid-template-columns:
-          1fr;
-
-        max-width: 650px;
-
-        margin-left: auto;
-        margin-right: auto;
-
+          repeat(2, minmax(0, 1fr));
       }
 
-
-      .survey-card {
-
-        min-height: 390px;
-
-      }
-
-
-      .card-title {
-
-        min-height: auto;
-
-      }
-
-
-      .card-description {
-
-        min-height: auto;
+      .survey-card:last-child {
+        grid-column: 1 / -1;
 
         max-width: 500px;
 
+        width: 100%;
+
+        margin: 0 auto;
       }
 
     }
 
 
     /* =====================================================
-       RESPONSIVE HP
+       HP
     ===================================================== */
 
-    @media screen and (max-width: 600px) {
-
-      body {
-
-        font-size: 16px;
-
-      }
-
+    @media screen and (max-width: 700px) {
 
       .container {
-
-        padding:
-          10px
-          8px
-          15px;
-
+        padding: 10px;
       }
 
 
       .header {
+        padding: 28px 15px 25px;
 
-        padding:
-          15px
-          8px
-          20px;
-
+        border-radius: 15px;
       }
 
 
       .logo-wrapper {
-
-        width: 105px;
-        height: 105px;
-
-        border-width: 3px;
+        width: 95px;
+        height: 95px;
 
         margin-bottom: 15px;
-
       }
 
 
       .header h1 {
+        font-size: 23px;
 
-        font-size: 25px;
-
-        line-height: 1.3;
-
+        line-height: 1.35;
       }
 
 
       .header h2 {
+        font-size: 17px;
 
-        font-size: 19px;
-
-        line-height: 1.4;
-
+        line-height: 1.45;
       }
 
 
       .header-description {
+        font-size: 14px;
 
-        font-size: 16px;
-
+        line-height: 1.7;
       }
 
 
-      .header-line {
-
-        width: 130px;
-
-      }
-
-
-      .welcome {
-
+      .dashboard-title {
         padding:
-          17px
-          14px;
-
-        margin-bottom: 20px;
-
+          28px 5px 18px;
       }
 
 
-      .welcome-title {
-
+      .dashboard-title h3 {
         font-size: 21px;
-
       }
 
 
-      .welcome-text {
-
-        font-size: 16px;
-
+      .dashboard-title p {
+        font-size: 14px;
       }
 
 
       .survey-grid {
+        grid-template-columns: 1fr;
 
-        gap: 16px;
-
+        gap: 15px;
       }
 
 
-      .survey-card {
+      .survey-card,
+      .survey-card:last-child {
+        grid-column: auto;
 
-        min-height: 420px;
+        max-width: none;
 
-        border-radius: 14px;
+        min-height: 0;
 
+        padding: 20px;
+
+        margin: 0;
       }
 
 
-      .card-content {
+      .survey-number {
+        width: 38px;
+        height: 38px;
 
-        padding:
-          25px
-          18px
-          20px;
-
+        top: 15px;
+        right: 15px;
       }
 
 
-      .card-icon {
+      .survey-icon {
+        width: 65px;
+        height: 65px;
 
-        width: 75px;
-        height: 75px;
+        font-size: 32px;
 
-        font-size: 36px;
-
+        margin-bottom: 16px;
       }
 
 
-      .card-title {
-
-        font-size: 21px;
-
+      .survey-card h4 {
+        font-size: 19px;
       }
 
 
-      .card-description {
+      .survey-description {
+        font-size: 14px;
+      }
+
+
+      .survey-info {
+        font-size: 13px;
+      }
+
+
+      .survey-button {
+        min-height: 55px;
 
         font-size: 16px;
-
       }
 
 
-      .card-button {
+      .information-box {
+        padding: 20px 15px;
 
-        min-height: 58px;
+        margin-top: 20px;
+      }
 
+
+      .information-box h5 {
         font-size: 18px;
-
       }
 
 
-      .info-area {
-
-        margin-top: 22px;
-
-        padding:
-          15px 12px;
-
-        font-size: 15px;
-
+      .information-box p {
+        font-size: 14px;
       }
 
 
       .footer {
+        font-size: 12px;
 
-        font-size: 13px;
-
+        padding-top: 25px;
       }
 
     }
 
 
     /* =====================================================
-       HP SANGAT KECIL
+       HP KECIL
     ===================================================== */
 
     @media screen and (max-width: 380px) {
 
       .header h1 {
-
-        font-size: 22px;
-
+        font-size: 21px;
       }
 
 
       .header h2 {
-
-        font-size: 17px;
-
+        font-size: 16px;
       }
 
 
-      .card-title {
-
-        font-size: 19px;
-
+      .survey-card {
+        padding: 17px;
       }
 
 
-      .card-description {
+      .survey-card h4 {
+        font-size: 18px;
+      }
 
+
+      .survey-button {
         font-size: 15px;
-
       }
 
     }
+
 
   </style>
 
@@ -1405,7 +1173,34 @@
 
 
   <!-- =====================================================
-       MAIN CONTAINER
+       LOADING
+  ===================================================== -->
+
+  <div
+    id="loadingOverlay"
+    class="loading-overlay"
+  >
+
+    <div class="loading-box">
+
+      <div class="loading-spinner"></div>
+
+      <h6>
+        Membuka survei...
+      </h6>
+
+      <p>
+        Mohon tunggu sebentar
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       CONTAINER
   ===================================================== -->
 
   <div class="container">
@@ -1422,27 +1217,22 @@
 
       <div class="logo-wrapper">
 
-        <!--
-          =================================================
-          GANTI FILE LOGO DI SINI JIKA NAMA FILE BERBEDA
-          =================================================
-        -->
-
         <img
           src="LOGO LANMAR EMAS.png"
           alt="Logo LANMAR Surabaya"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;font-size:35px;font-weight:900;color:#07111f;&quot;>L</span>';"
         >
 
       </div>
 
 
       <h1>
-        SISTEM SURVEI
+        LANMAR SURABAYA
       </h1>
 
 
       <h2>
-        LANMAR SURABAYA
+        Sistem Survei Pelayanan Publik
       </h2>
 
 
@@ -1450,228 +1240,330 @@
 
 
       <p class="header-description">
-        Sistem Informasi Survei Persepsi dan Kualitas
-        Pelayanan Publik LANMAR Surabaya
+
+        Selamat datang pada Sistem Survei LANMAR Surabaya.
+        Silakan pilih jenis survei yang akan Anda ikuti.
+
       </p>
 
 
     </header>
 
 
+
     <!-- ===================================================
-         WELCOME
+         JUDUL DASHBOARD
     ==================================================== -->
 
-    <section class="welcome">
+    <section class="dashboard-title">
 
-      <div class="welcome-title">
-        SELAMAT DATANG
-      </div>
+      <h3>
+        📋 PILIH JENIS SURVEI
+      </h3>
 
-      <div class="welcome-text">
-
-        Silakan pilih jenis survei yang ingin
-        Bapak/Ibu isi.
-
-      </div>
+      <p>
+        Pilih salah satu survei di bawah ini untuk
+        memberikan penilaian terhadap pelayanan LANMAR Surabaya.
+      </p>
 
     </section>
 
 
+
     <!-- ===================================================
-         3 MENU SURVEI
+         SURVEY GRID
     ==================================================== -->
 
-    <main class="survey-grid">
+    <section class="survey-grid">
 
 
       <!-- =================================================
            SURVEI 1
       ================================================== -->
 
-      <article class="survey-card">
-
-        <div class="card-top"></div>
+      <div class="survey-card">
 
 
-        <div class="card-content">
+        <div class="survey-number">
+          01
+        </div>
 
 
-          <div class="card-icon">
-            🛡️
-          </div>
+        <div class="survey-icon">
+          🛡️
+        </div>
 
 
-          <div class="card-number">
-            SURVEI 01
-          </div>
+        <div class="survey-badge">
+          INDEKS ANTI KORUPSI
+        </div>
 
 
-          <h3 class="card-title">
-
-            SURVEI INDEKS
-
-            <span class="highlight">
-              PERSEPSI ANTI KORUPSI
-            </span>
-
-          </h3>
+        <h4>
+          SURVEI INDEKS PERSEPSI
+          ANTI KORUPSI
+          LANMAR SURABAYA
+        </h4>
 
 
-          <p class="card-description">
+        <p class="survey-description">
 
-            Berikan penilaian terhadap integritas
-            dan pelayanan yang bebas dari korupsi
-            di lingkungan LANMAR Surabaya.
+          Survei untuk mengukur persepsi masyarakat terhadap
+          integritas pelayanan serta upaya pencegahan korupsi
+          di lingkungan LANMAR Surabaya.
 
-          </p>
+        </p>
 
 
-          <button
-            type="button"
-            class="card-button"
-            onclick="bukaSurvei('spak')"
+        <div class="survey-info">
+
+          <span class="survey-info-icon">
+            ✓
+          </span>
+
+          <span>
+            Penilaian integritas dan anti korupsi
+          </span>
+
+        </div>
+
+
+        <div class="button-group">
+
+
+          <!-- TOMBOL KUESIONER -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-survei"
+            onclick="bukaSurvei('SPAK')"
           >
+
+            📝
             MULAI SURVEI
-          </button>
+
+          </a>
+
+
+          <!-- TOMBOL PERSENTASE RESPONDEN -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-persentase"
+            onclick="bukaPersentase('SPAK')"
+          >
+
+            📊
+            PERSENTASE RESPONDEN
+
+          </a>
 
 
         </div>
 
-      </article>
+      </div>
+
 
 
       <!-- =================================================
            SURVEI 2
       ================================================== -->
 
-      <article class="survey-card">
-
-        <div class="card-top"></div>
+      <div class="survey-card">
 
 
-        <div class="card-content">
+        <div class="survey-number">
+          02
+        </div>
 
 
-          <div class="card-icon">
-            ⭐
-          </div>
+        <div class="survey-icon">
+          ⭐
+        </div>
 
 
-          <div class="card-number">
-            SURVEI 02
-          </div>
+        <div class="survey-badge">
+          KEPUASAN MASYARAKAT
+        </div>
 
 
-          <h3 class="card-title">
-
-            SURVEI INDEKS
-
-            <span class="highlight">
-              KEPUASAN MASYARAKAT
-            </span>
-
-          </h3>
+        <h4>
+          SURVEI INDEKS
+          KEPUASAN MASYARAKAT
+          LANMAR SURABAYA
+        </h4>
 
 
-          <p class="card-description">
+        <p class="survey-description">
 
-            Berikan penilaian mengenai tingkat
-            kepuasan masyarakat terhadap pelayanan
-            yang diberikan LANMAR Surabaya.
+          Survei untuk mengetahui tingkat kepuasan masyarakat
+          terhadap kualitas pelayanan yang diberikan oleh
+          LANMAR Surabaya.
 
-          </p>
+        </p>
 
 
-          <button
-            type="button"
-            class="card-button"
-            onclick="bukaSurvei('ikm')"
+        <div class="survey-info">
+
+          <span class="survey-info-icon">
+            ✓
+          </span>
+
+          <span>
+            Penilaian kepuasan masyarakat
+          </span>
+
+        </div>
+
+
+        <div class="button-group">
+
+
+          <!-- TOMBOL KUESIONER -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-survei"
+            onclick="bukaSurvei('IKM')"
           >
+
+            📝
             MULAI SURVEI
-          </button>
+
+          </a>
+
+
+          <!-- TOMBOL PERSENTASE RESPONDEN -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-persentase"
+            onclick="bukaPersentase('IKM')"
+          >
+
+            📊
+            PERSENTASE RESPONDEN
+
+          </a>
 
 
         </div>
 
-      </article>
+      </div>
+
 
 
       <!-- =================================================
            SURVEI 3
       ================================================== -->
 
-      <article class="survey-card">
-
-        <div class="card-top"></div>
+      <div class="survey-card">
 
 
-        <div class="card-content">
+        <div class="survey-number">
+          03
+        </div>
 
 
-          <div class="card-icon">
-            📋
-          </div>
+        <div class="survey-icon">
+          📋
+        </div>
 
 
-          <div class="card-number">
-            SURVEI 03
-          </div>
+        <div class="survey-badge">
+          KUALITAS PELAYANAN
+        </div>
 
 
-          <h3 class="card-title">
-
-            SURVEY INDEKS
-
-            <span class="highlight">
-              KUALITAS PELAYANAN
-            </span>
-
-          </h3>
+        <h4>
+          SURVEY INDEKS
+          KUALITAS PELAYANAN
+          LANMAR SURABAYA
+        </h4>
 
 
-          <p class="card-description">
+        <p class="survey-description">
 
-            Berikan penilaian terhadap kualitas
-            pelayanan LANMAR Surabaya sebagai bahan
-            evaluasi dan peningkatan pelayanan.
+          Survei untuk mengukur kualitas pelayanan LANMAR
+          Surabaya sebagai bahan evaluasi dan peningkatan
+          pelayanan secara berkelanjutan.
 
-          </p>
+        </p>
 
 
-          <button
-            type="button"
-            class="card-button"
-            onclick="bukaSurvei('ikp')"
+        <div class="survey-info">
+
+          <span class="survey-info-icon">
+            ✓
+          </span>
+
+          <span>
+            Penilaian kualitas pelayanan
+          </span>
+
+        </div>
+
+
+        <div class="button-group">
+
+
+          <!-- TOMBOL KUESIONER -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-survei"
+            onclick="bukaSurvei('IKP')"
           >
+
+            📝
             MULAI SURVEI
-          </button>
+
+          </a>
+
+
+          <!-- TOMBOL PERSENTASE RESPONDEN -->
+
+          <a
+            href="javascript:void(0)"
+            class="survey-button btn-persentase"
+            onclick="bukaPersentase('IKP')"
+          >
+
+            📊
+            PERSENTASE RESPONDEN
+
+          </a>
 
 
         </div>
 
-      </article>
+      </div>
 
 
-    </main>
+    </section>
+
 
 
     <!-- ===================================================
-         INFO
+         INFORMASI
     ==================================================== -->
 
-    <div class="info-area">
+    <section class="information-box">
 
-      <span class="info-icon">
-        ℹ️
-      </span>
+      <h5>
+        ℹ️ INFORMASI SURVEI
+      </h5>
 
-      <span>
-        Pilih salah satu survei sesuai dengan
-        kebutuhan penilaian yang akan Bapak/Ibu berikan.
-      </span>
+      <p>
 
-    </div>
+        Masukan dan penilaian Bapak/Ibu sangat membantu
+        LANMAR Surabaya dalam meningkatkan kualitas pelayanan,
+        integritas, serta kepuasan masyarakat.
+
+      </p>
+
+    </section>
+
 
 
     <!-- ===================================================
@@ -1680,19 +1572,21 @@
 
     <footer class="footer">
 
-      <div>
+      <div class="footer-line"></div>
+
+      <p>
         <strong>
           LANMAR SURABAYA
         </strong>
-      </div>
+      </p>
 
-      <div>
-        Sistem Informasi Survei Pelayanan Publik
-      </div>
+      <p>
+        Sistem Survei Pelayanan Publik
+      </p>
 
-      <div>
-        © 2025 LANMAR Surabaya
-      </div>
+      <p>
+        © 2026 LANMAR Surabaya
+      </p>
 
     </footer>
 
@@ -1700,150 +1594,82 @@
   </div>
 
 
-  <!-- =====================================================
-       LOADING OVERLAY
-  ====================================================== -->
-
-  <div
-    id="loadingOverlay"
-    class="loading-overlay"
-  >
-
-    <div class="loading-box">
-
-      <div class="loading-spinner"></div>
-
-      <div class="loading-text">
-        Membuka halaman survei...
-      </div>
-
-    </div>
-
-  </div>
-
 
   <!-- =====================================================
        JAVASCRIPT
-  ====================================================== -->
+  ===================================================== -->
 
   <script>
 
 
     /* =====================================================
-       URL MASING-MASING KUESIONER
+       URL KUESIONER
        
-       =====================================================
-       
-       GANTI URL DI BAWAH INI DENGAN URL WEB APP
-       MASING-MASING KUESIONER.
-       
-       Contoh:
-       
-       spak:
-       https://script.google.com/macros/s/XXXXX/exec
-       
-       ikm:
-       https://script.google.com/macros/s/YYYYY/exec
-       
-       ikp:
-       https://script.google.com/macros/s/ZZZZZ/exec
-       
+       GANTI URL DI BAWAH INI
        ===================================================== */
 
     const URL_SURVEI = {
 
-      /* -------------------------------------------------
-         1. SURVEI INDEKS PERSEPSI ANTI KORUPSI
-         ------------------------------------------------- */
+      SPAK:
+        "MASUKKAN_URL_KUESIONER_SPAK_DISINI",
 
-      spak:
-        "https://script.google.com/macros/s/AKfycbwruRT3rjqn_sVf8vt7HiSNAjgCIv-uyAleRppkdBjnNpD2fBC0c5x1-7LengVFMy_Z/exec",
+      IKM:
+        "MASUKKAN_URL_KUESIONER_IKM_DISINI",
 
-
-      /* -------------------------------------------------
-         2. SURVEI INDEKS KEPUASAN MASYARAKAT
-         ------------------------------------------------- */
-
-      ikm:
-        "https://script.google.com/macros/s/URL_IKM/exec",
-
-
-      /* -------------------------------------------------
-         3. SURVEY INDEKS KUALITAS PELAYANAN
-         ------------------------------------------------- */
-
-      ikp:
-        "https://script.google.com/macros/s/URL_IKP/exec"
+      IKP:
+        "MASUKKAN_URL_KUESIONER_IKP_DISINI"
 
     };
 
 
     /* =====================================================
-       BUKA SURVEI
-    ====================================================== */
+       URL PERSENTASE RESPONDEN
+       
+       GANTI URL DI BAWAH INI
+       ===================================================== */
 
-    function bukaSurvei(jenis) {
+    const URL_PERSENTASE = {
 
+      SPAK:
+        "MASUKKAN_URL_PERSENTASE_SPAK_DISINI",
 
-      let url = "";
+      IKM:
+        "MASUKKAN_URL_PERSENTASE_IKM_DISINI",
 
+      IKP:
+        "MASUKKAN_URL_PERSENTASE_IKP_DISINI"
 
-      /* ================================================
-         TENTUKAN URL
-      ================================================ */
-
-      if (jenis === "spak") {
-
-        url = URL_SURVEI.spak;
-
-      }
-
-
-      else if (jenis === "ikm") {
-
-        url = URL_SURVEI.ikm;
-
-      }
+    };
 
 
-      else if (jenis === "ikp") {
+    /* =====================================================
+       NAMA SURVEI
+    ===================================================== */
 
-        url = URL_SURVEI.ikp;
+    const NAMA_SURVEI = {
 
-      }
+      SPAK:
+        "Survei Indeks Persepsi Anti Korupsi",
 
+      IKM:
+        "Survei Indeks Kepuasan Masyarakat",
 
-      /* ================================================
-         CEK URL
-      ================================================ */
+      IKP:
+        "Survey Indeks Kualitas Pelayanan"
 
-      if (
-        !url ||
-        url.includes("URL_SPAK") ||
-        url.includes("URL_IKM") ||
-        url.includes("URL_IKP")
-      ) {
-
-        alert(
-          "URL survei belum diatur.\n\n" +
-          "Silakan isi URL survei terlebih dahulu " +
-          "pada bagian URL_SURVEI di index.html."
-        );
-
-        return;
-
-      }
+    };
 
 
-      /* ================================================
-         TAMPILKAN LOADING
-      ================================================ */
+    /* =====================================================
+       TAMPILKAN LOADING
+    ===================================================== */
+
+    function tampilkanLoading() {
 
       const loading =
         document.getElementById(
           "loadingOverlay"
         );
-
 
       if (loading) {
 
@@ -1851,10 +1677,57 @@
 
       }
 
+    }
 
-      /* ================================================
-         BUKA HALAMAN
-      ================================================ */
+
+    /* =====================================================
+       SEMBUNYIKAN LOADING
+    ===================================================== */
+
+    function sembunyikanLoading() {
+
+      const loading =
+        document.getElementById(
+          "loadingOverlay"
+        );
+
+      if (loading) {
+
+        loading.classList.remove("show");
+
+      }
+
+    }
+
+
+    /* =====================================================
+       BUKA SURVEI
+    ===================================================== */
+
+    function bukaSurvei(jenis) {
+
+      const url =
+        URL_SURVEI[jenis];
+
+
+      if (
+        !url ||
+        url.indexOf("MASUKKAN_URL") === 0
+      ) {
+
+        alert(
+          "URL " +
+          NAMA_SURVEI[jenis] +
+          " belum diatur."
+        );
+
+        return;
+
+      }
+
+
+      tampilkanLoading();
+
 
       setTimeout(function() {
 
@@ -1866,24 +1739,52 @@
 
 
     /* =====================================================
-       ANIMASI SAAT KEMBALI KE HALAMAN
-    ====================================================== */
+       BUKA PERSENTASE RESPONDEN
+    ===================================================== */
+
+    function bukaPersentase(jenis) {
+
+      const url =
+        URL_PERSENTASE[jenis];
+
+
+      if (
+        !url ||
+        url.indexOf("MASUKKAN_URL") === 0
+      ) {
+
+        alert(
+          "URL halaman persentase responden untuk " +
+          NAMA_SURVEI[jenis] +
+          " belum diatur."
+        );
+
+        return;
+
+      }
+
+
+      tampilkanLoading();
+
+
+      setTimeout(function() {
+
+        window.location.href = url;
+
+      }, 500);
+
+    }
+
+
+    /* =====================================================
+       CEGAH LOADING TERKUNCI SAAT KEMBALI
+    ===================================================== */
 
     window.addEventListener(
       "pageshow",
       function() {
 
-        const loading =
-          document.getElementById(
-            "loadingOverlay"
-          );
-
-
-        if (loading) {
-
-          loading.classList.remove("show");
-
-        }
+        sembunyikanLoading();
 
       }
     );
